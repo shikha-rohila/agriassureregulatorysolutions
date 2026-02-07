@@ -3,95 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agriassure Regulatory Solutions</title>
-    <!-- Load Tailwind CSS -->
+    <title>GreenCode LLP | Agro & Tech Terminals</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons for professional icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
-        /* Custom font for a modern look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc; /* Light gray background */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
-        .text-agri { color: #059669; } /* Emerald green for branding */
-        .bg-agri { background-color: #059669; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* View Transitions */
+        .view-content {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .view-hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .view-visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text-agro {
+            background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-text-tech {
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-agri { color: #059669; }
         .border-agri { border-color: #059669; }
-        .card-shadow { box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.1), 0 4px 6px -2px rgba(5, 150, 105, 0.05); }
+        .bg-agri { background-color: #059669; }
+
+        .text-tech { color: #2563eb; }
+        .border-tech { border-color: #2563eb; }
+        .bg-tech { background-color: #2563eb; }
+
+        .nav-underline {
+            height: 2px;
+            background-color: #059669;
+            transition: width 0.3s ease;
+            width: 0;
+        }
+        .nav-link-active .nav-underline {
+            width: 100%;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
-    <!-- Header & Hero Section -->
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-extrabold text-agri tracking-tight">
-                Agri<span class="text-gray-800">assure</span>
-            </h1>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-gray-600 hover:text-agri transition duration-150 font-medium">About</a>
-                <a href="#services" class="text-gray-600 hover:text-agri transition duration-150 font-medium">Services</a>
-                <a href="#expertise" class="text-gray-600 hover:text-agri transition duration-150 font-medium">Expertise</a>
-                <a href="#contact" class="px-4 py-2 bg-agri text-white font-medium rounded-lg hover:bg-emerald-700 transition duration-150 shadow-md">Get Started</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="bg-agri py-20 md:py-32 text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
-                    Navigate Agri-Regulatory Compliance <br class="hidden md:inline">with Confidence
-                </h2>
-                <p class="text-xl md:text-2xl font-light opacity-90 mb-8 max-w-3xl mx-auto">
-                    Your trusted partner for reliable, end-to-end registration and technical advisory across all agricultural inputs in India and globally.
-                </p>
-                <a href="#services" class="inline-block px-10 py-4 bg-white text-agri font-bold text-lg rounded-xl hover:bg-gray-100 transition duration-300 shadow-xl transform hover:scale-105">
-                    Explore Our Solutions
-                </a>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2 cursor-pointer group" onclick="showView('home')">
+                <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white group-hover:bg-emerald-600 transition-colors shadow-lg">
+                    <i data-lucide="leaf" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
+                </div>
+                <span class="text-2xl font-bold tracking-tighter text-slate-900">
+                    Green<span class="text-emerald-600">Code</span>
+                </span>
             </div>
-        </section>
 
-        <!-- About Us Section -->
-        <section id="about" class="py-16 md:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                    <div class="order-2 lg:order-1">
-                        <h3 class="text-sm font-semibold uppercase text-agri mb-3">Who We Are</h3>
-                        <h2 class="text-4xl font-bold text-gray-900 mb-6">Backed by Deep Regulatory Experience</h2>
-                        <p class="text-gray-600 text-lg mb-6">
-                            Agriassure Regulatory Solutions is a specialized agricultural regulatory and technical advisory firm with **over 9 years of hands-on sector experience**. We provide reliable, accurate, and end-to-end solutions for all agri-input registrations and compliance requirements.
-                        </p>
-                        <ul class="space-y-4 text-gray-700 text-base">
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-agri flex-shrink-0 mr-3 mt-1"></i>
-                                <span class="font-medium">Former Technical Officer at CIB&RC:</span> Direct exposure to the core Pesticide regulatory body.
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-agri flex-shrink-0 mr-3 mt-1"></i>
-                                <span class="font-medium">Former Technical Expert in INM Division:</span> Expertise in Fertilizer and Nutrition Management regulations.
-                            </li>
-                            <li class="flex items-start">
-                                <i data-lucide="check-circle" class="w-6 h-6 text-agri flex-shrink-0 mr-3 mt-1"></i>
-                                <span class="font-medium">M.Sc. Entomology:</span> Strong scientific foundation for technical advisory.
-                            </li>
-                        </ul>
+            <div class="hidden md:flex items-center gap-10">
+                <button onclick="showView('home')" data-view-btn="home" class="nav-btn text-sm font-bold tracking-wide uppercase transition-all relative py-1 text-slate-500 hover:text-slate-900">
+                    Home
+                    <div class="nav-underline absolute bottom-0 left-0"></div>
+                </button>
+                <button onclick="showView('agro')" data-view-btn="agro" class="nav-btn text-sm font-bold tracking-wide uppercase transition-all relative py-1 text-slate-500 hover:text-slate-900">
+                    Agro Terminal
+                    <div class="nav-underline absolute bottom-0 left-0"></div>
+                </button>
+                <button onclick="showView('tech')" data-view-btn="tech" class="nav-btn text-sm font-bold tracking-wide uppercase transition-all relative py-1 text-slate-500 hover:text-slate-900">
+                    Tech Terminal
+                    <div class="nav-underline absolute bottom-0 left-0"></div>
+                </button>
+                <button onclick="showView('about')" data-view-btn="about" class="nav-btn text-sm font-bold tracking-wide uppercase transition-all relative py-1 text-slate-500 hover:text-slate-900">
+                    Our Mission
+                    <div class="nav-underline absolute bottom-0 left-0"></div>
+                </button>
+                <button onclick="showView('contact')" data-view-btn="contact" class="nav-btn text-sm font-bold tracking-wide uppercase transition-all relative py-1 text-slate-500 hover:text-slate-900">
+                    Contact
+                    <div class="nav-underline absolute bottom-0 left-0"></div>
+                </button>
+            </div>
+
+            <button class="md:hidden text-slate-900" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" id="menu-icon" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-white hidden flex-col p-10 pt-32">
+        <button class="absolute top-6 right-6 p-2" onclick="toggleMobileMenu()">
+            <i data-lucide="x" class="w-8 h-8 text-slate-900"></i>
+        </button>
+        <div class="flex flex-col gap-10">
+            <button onclick="showView('home'); toggleMobileMenu();" class="text-4xl font-black text-left uppercase tracking-tighter">Home</button>
+            <button onclick="showView('agro'); toggleMobileMenu();" class="text-4xl font-black text-left uppercase tracking-tighter">Agro Terminal</button>
+            <button onclick="showView('tech'); toggleMobileMenu();" class="text-4xl font-black text-left uppercase tracking-tighter">Tech Terminal</button>
+            <button onclick="showView('about'); toggleMobileMenu();" class="text-4xl font-black text-left uppercase tracking-tighter">Our Mission</button>
+            <button onclick="showView('contact'); toggleMobileMenu();" class="text-4xl font-black text-left uppercase tracking-tighter">Contact</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        
+        <!-- Home View -->
+        <section id="view-home" class="view-content view-visible pt-32 pb-24 px-6 min-h-screen">
+            <div class="max-w-7xl mx-auto text-center mb-20">
+                <span class="inline-block px-4 py-1.5 mb-6 text-[10px] font-bold tracking-[0.2em] text-emerald-700 uppercase bg-emerald-50 rounded-full border border-emerald-100">
+                    Corporate Excellence • Dual-Core Expertise
+                </span>
+                <h1 class="text-5xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-tight">
+                    Choose Your <br/><span class="gradient-text-agro italic">Terminal.</span>
+                </h1>
+            </div>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Agro Card -->
+                <div onclick="showView('agro')" class="relative h-[600px] rounded-[3rem] bg-emerald-950 overflow-hidden cursor-pointer shadow-2xl group transition-transform duration-500 hover:scale-[1.02]">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700" alt="Agro">
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent"></div>
+                    <div class="absolute top-12 left-12 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-md flex items-center justify-center text-emerald-400 border border-white/10 relative z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="leaf" class="w-10 h-10"></i>
                     </div>
-                    <div class="order-1 lg:order-2 mt-10 lg:mt-0 relative">
-                        <!-- Placeholder Image for expertise/regulation -->
-                        <img src="https://placehold.co/600x400/10b981/ffffff?text=Regulatory+Framework" alt="Regulatory Compliance Graphic" class="rounded-2xl shadow-2xl object-cover transform hover:scale-[1.01] transition duration-500 hidden lg:block">
-                        <div class="p-6 bg-agri rounded-xl text-white text-center mt-6 lg:absolute lg:bottom-4 lg:left-4 lg:right-4 card-shadow">
-                            <p class="text-3xl font-bold">9+ Years of Specialized Experience</p>
-                        </div>
+                    <div class="absolute inset-0 p-12 flex flex-col justify-end relative z-10 text-white">
+                        <h2 class="text-4xl font-bold mb-4">Agro Terminal</h2>
+                        <p class="text-emerald-100/70 mb-8 max-w-sm leading-relaxed text-sm md:text-base">Deciphering the Insecticides Act 1968 and FCO 1985. We bridge the gap between innovation and regulatory approval.</p>
+                        <div class="flex items-center gap-3 text-emerald-400 font-bold group-hover:gap-5 transition-all">Launch Regulatory Engine <i data-lucide="chevron-right"></i></div>
+                    </div>
+                </div>
+                <!-- Tech Card -->
+                <div onclick="showView('tech')" class="relative h-[600px] rounded-[3rem] bg-slate-950 overflow-hidden cursor-pointer shadow-2xl group transition-transform duration-500 hover:scale-[1.02]">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-700" alt="Tech">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                    <div class="absolute top-12 left-12 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-md flex items-center justify-center text-blue-400 border border-white/10 relative z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cpu" class="w-10 h-10"></i>
+                    </div>
+                    <div class="absolute inset-0 p-12 flex flex-col justify-end relative z-10 text-white">
+                        <h2 class="text-4xl font-bold mb-4">Tech Terminal</h2>
+                        <p class="text-blue-100/70 mb-8 max-w-sm leading-relaxed text-sm md:text-base">Architecting mission-critical ecosystems. Enterprise mastery in Neural Models, Web Infrastructures, and Software Design.</p>
+                        <div class="flex items-center gap-3 text-blue-400 font-bold group-hover:gap-5 transition-all">Launch Development Lab <i data-lucide="chevron-right"></i></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-16 md:py-24 bg-gray-50">
+        <!-- Agro View -->
+        <section id="view-agro" class="view-content view-hidden pt-32 pb-24 min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h3 class="text-sm font-semibold uppercase text-agri mb-3">What We Offer</h3>
@@ -100,14 +189,13 @@
                         We handle the complexity of central and state-level compliance so you can focus on innovation and market growth.
                     </p>
                 </div>
-
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
                     <!-- Service Card 1: CIB&RC (Pesticide) Registration -->
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-agri transform hover:-translate-y-1">
                         <i data-lucide="shield-check" class="w-10 h-10 text-agri mb-4"></i>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">Pesticide Registration (CIB&RC)</h4>
-                        <p class="text-gray-600 mb-4">Full professional support for getting your products registered under the Insecticides Act.</p>
+                        <p class="text-gray-600 mb-4 text-sm">Full professional support for getting your products registered under the Insecticides Act.</p>
                         <ul class="text-sm text-gray-700 space-y-2">
                             <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Sections 9(3) and 9(4) for Chemical & Biopesticides.</li>
                             <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Import and Export Permissions.</li>
@@ -119,7 +207,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-agri transform hover:-translate-y-1">
                         <i data-lucide="leaf" class="w-10 h-10 text-agri mb-4"></i>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">Fertilizer & Bio-stimulant Compliance (FCO)</h4>
-                        <p class="text-gray-600 mb-4">Expert guidance for all product categories under the Fertilizer Control Order (FCO).</p>
+                        <p class="text-gray-600 mb-4 text-sm">Expert guidance for all product categories under the Fertilizer Control Order (FCO).</p>
                         <ul class="text-sm text-gray-700 space-y-2">
                             <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Permanent Registration of Bio-stimulants (End-to-end support).</li>
                             <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Registration of Organic, Inorganic, and Specialty Fertilizers.</li>
@@ -131,7 +219,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-agri transform hover:-translate-y-1">
                         <i data-lucide="map-pin" class="w-10 h-10 text-agri mb-4"></i>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">Pan-India State Permissions & Licenses</h4>
-                        <p class="text-gray-600 mb-4">Secure all necessary operating permissions across various state regulatory bodies.</p>
+                        <p class="text-gray-600 mb-4 text-sm">Secure all necessary operating permissions across various state regulatory bodies.</p>
                         <ul class="text-sm text-gray-700 space-y-2">
                             <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Sales Permissions for all inputs (Fertilizers, Pesticides, Bio-stimulants) in all Indian states.</li>
                             <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Documentation, submission, and follow-up at the state level.</li>
@@ -143,7 +231,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-agri transform hover:-translate-y-1">
                         <i data-lucide="lightbulb" class="w-10 h-10 text-agri mb-4"></i>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">Technical & Scientific Advisory</h4>
-                        <p class="text-gray-600 mb-4">In-depth technical consultation to inform your regulatory and product strategy.</p>
+                        <p class="text-gray-600 mb-4 text-sm">In-depth technical consultation to inform your regulatory and product strategy.</p>
                         <ul class="text-sm text-gray-700 space-y-2">
                             <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Guidance on Product Classification and Specifications.</li>
                             <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Expert advice on technical matters and regulatory pathways.</li>
@@ -155,7 +243,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-agri transform hover:-translate-y-1">
                         <i data-lucide="bar-chart" class="w-10 h-10 text-agri mb-4"></i>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">Bio-efficacy Data Generation & Dossiers</h4>
-                        <p class="text-gray-600 mb-4">Essential scientific data collection and analysis required for product approval.</p>
+                        <p class="text-gray-600 mb-4 text-sm">Essential scientific data collection and analysis required for product approval.</p>
                         <ul class="text-sm text-gray-700 space-y-2">
                             <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Designing field trials as per regulatory guidelines.</li>
                             <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Coordination with ICAR/SAU-approved research institutes.</li>
@@ -167,7 +255,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-agri transform hover:-translate-y-1">
                         <i data-lucide="globe" class="w-10 h-10 text-agri mb-4"></i>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">Global Regulatory Support</h4>
-                        <p class="text-gray-600 mb-4">Expand your market reach with our assistance for international product registration.</p>
+                        <p class="text-gray-600 mb-4 text-sm">Expand your market reach with our assistance for international product registration.</p>
                         <ul class="text-sm text-gray-700 space-y-2">
                             <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Registration of Pesticides, Biofertilizers, and Bio-stimulants.</li>
                             <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-agri mr-2 mt-0.5 flex-shrink-0"></i> Current Focus Markets: **Brazil** and the **USA**.</li>
@@ -178,88 +266,295 @@
             </div>
         </section>
 
-        <!-- Expertise & CTA Section -->
-        <section id="expertise" class="py-16 md:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h3 class="text-sm font-semibold uppercase text-agri mb-3">Our Foundation</h3>
-                <h2 class="text-4xl font-bold text-gray-900 mb-8">Unmatched Insight from the Inside</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-md">
-                        <i data-lucide="graduation-cap" class="w-12 h-12 text-agri mx-auto mb-3"></i>
-                        <p class="text-3xl font-extrabold text-agri">M.Sc. Entomology</p>
-                        <p class="text-gray-600 font-medium">GBPUA&T Pantnagar</p>
-                        <p class="text-sm text-gray-500 mt-1">Strong scientific and technical foundation.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-md">
-                        <i data-lucide="briefcase" class="w-12 h-12 text-agri mx-auto mb-3"></i>
-                        <p class="text-3xl font-extrabold text-agri">CIB&RC</p>
-                        <p class="text-gray-600 font-medium">Former Technical Officer</p>
-                        <p class="text-sm text-gray-500 mt-1">Direct understanding of pesticide approval processes.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-xl shadow-md">
-                        <i data-lucide="file-check" class="w-12 h-12 text-agri mx-auto mb-3"></i>
-                        <p class="text-3xl font-extrabold text-agri">INM Division</p>
-                        <p class="text-gray-600 font-medium">Former Technical Expert</p>
-                        <p class="text-sm text-gray-500 mt-1">Specialized knowledge in fertilizer and bio-stimulant regulations.</p>
-                    </div>
-                </div>
-
-                <div class="mt-16 bg-agri/10 p-10 rounded-2xl border border-agri/30">
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Ready to Launch Your Product?</h3>
-                    <p class="text-xl text-gray-700 mb-6 max-w-4xl mx-auto">
-                        Stop navigating complex regulations alone. Leverage our insider knowledge and experience to accelerate your approval process and achieve compliance efficiently.
+        <!-- Tech View -->
+        <section id="view-tech" class="view-content view-hidden pt-32 pb-24 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h3 class="text-sm font-semibold uppercase text-tech mb-3">Enterprise Solutions</h3>
+                    <h2 class="text-4xl font-bold text-gray-900">Advanced Digital Engineering & AI</h2>
+                    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                        Combining a decade of IT mastery with cutting-edge technologies to build scalable, intelligent ecosystems.
                     </p>
-                    <a href="#contact" class="inline-block px-8 py-3 bg-agri text-white font-bold text-lg rounded-lg hover:bg-emerald-700 transition duration-300 shadow-lg transform hover:scale-105">
-                        Start Your Consultation Today
-                    </a>
                 </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tech Service Card 1: AI & ML -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-tech transform hover:-translate-y-1">
+                        <i data-lucide="cpu" class="w-10 h-10 text-tech mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">AI & Machine Learning</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Harnessing neural networks and predictive models to transform raw data into intelligence.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Custom LLM Fine-tuning and RAG Implementation.</li>
+                            <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Computer Vision for Industrial Automation.</li>
+                            <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Predictive Analytics for Market and Risk Forecasting.</li>
+                        </ul>
+                    </div>
 
+                    <!-- Tech Service Card 2: Full-Stack Web -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-tech transform hover:-translate-y-1">
+                        <i data-lucide="code-2" class="w-10 h-10 text-tech mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Modern Web Ecosystems</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Building high-performance, responsive web applications using the latest framework stacks.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> React & Next.js for Fluid User Interfaces.</li>
+                            <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Node.js & Go for Scalable Backend Architectures.</li>
+                            <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Real-time Dashboarding and API-First Design.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Service Card 3: Cloud & DevOps -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-tech transform hover:-translate-y-1">
+                        <i data-lucide="cloud" class="w-10 h-10 text-tech mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Cloud Infrastructure & DevOps</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Ensuring 99.9% uptime with robust cloud-native deployments and automated pipelines.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> AWS/Azure/GCP Deployment & Resource Optimization.</li>
+                            <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Kubernetes & Docker Container Orchestration.</li>
+                            <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> CI/CD Pipeline Automation (GitHub Actions/Jenkins).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Service Card 4: Software Design -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-tech transform hover:-translate-y-1">
+                        <i data-lucide="layers" class="w-10 h-10 text-tech mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Software Design & Architecture</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Crafting clean, maintainable codebases that evolve with your business needs.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Microservices & Distributed System Design.</li>
+                            <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Applying SOLID, DRY, and KISS Principles.</li>
+                            <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Legacy System Refactoring & Tech-Debt Management.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Service Card 5: Mobile Development -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-tech transform hover:-translate-y-1">
+                        <i data-lucide="smartphone" class="w-10 h-10 text-tech mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Mobile Solution Engineering</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Native and Cross-platform mobile apps built for seamless user engagement.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> React Native & Flutter for Cross-platform Efficiency.</li>
+                            <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Performance Optimization and Offline-First Capabilities.</li>
+                            <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Seamless App Store & Play Store Deployment Support.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tech Service Card 6: IT Strategy -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-tech transform hover:-translate-y-1">
+                        <i data-lucide="clipboard-check" class="w-10 h-10 text-tech mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">IT Strategy & Consulting</h4>
+                        <p class="text-gray-600 mb-4 text-sm">Strategic technical guidance to align your IT infrastructure with corporate goals.</p>
+                        <ul class="text-sm text-gray-700 space-y-2">
+                            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Comprehensive Technical Audits & Feasibility Studies.</li>
+                            <li class="flex items-start"><i data-lucide="package" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> Digital Transformation & Tech-Stack Modernization.</li>
+                            <li class="flex items-start"><i data-lucide="file-text" class="w-4 h-4 text-tech mr-2 mt-0.5 flex-shrink-0"></i> IT Governance, Security Policy, and Risk Management.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Contact Footer -->
-        <footer id="contact" class="bg-gray-800 py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
-                <h3 class="text-3xl font-bold mb-4">Get in Touch with Agriassure Regulatory Solutions</h3>
-                <p class="text-gray-400 text-lg mb-8">
-                    We are ready to discuss your specific registration requirements.
-                </p>
-                
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                    <div class="flex items-center">
-                        <i data-lucide="mail" class="w-6 h-6 text-agri mr-3"></i>
-                        <span class="text-lg">rohila.shikha15@gmail.com</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i data-lucide="phone" class="w-6 h-6 text-agri mr-3"></i>
-                        <span class="text-lg">+91 8218260171</span>
+        <!-- Mission View -->
+        <section id="view-about" class="view-content view-hidden pt-32 pb-24 px-6 min-h-screen">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-24">
+                    <h1 class="text-5xl md:text-6xl font-black mb-8 tracking-tight text-slate-900">Our Mission & <span class="text-emerald-600">Vision</span></h1>
+                    <div class="max-w-4xl mx-auto text-lg text-slate-600 leading-relaxed space-y-6">
+                        <p>At GreenCode LLP, our mission is to redefine the intersection of industry-specific regulatory compliance and advanced technological frameworks. We believe that for a business to thrive in the modern landscape, it requires a dual foundation of legal integrity and a digital engine that is both scalable and intelligent.</p>
+                        <p>Our vision is to empower the agricultural sector through the "Agro Terminal," simplifying the complex landscape of CIB&RC and FCO regulations, while simultaneously driving innovation through the "Tech Terminal."</p>
                     </div>
                 </div>
-
-                <div class="mt-10 pt-6 border-t border-gray-700">
-                    <p class="text-sm text-gray-500">
-                        &copy; 2024 Agriassure Regulatory Solutions. All rights reserved.
-                    </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+                    <div class="p-10 bg-white rounded-[3.5rem] border border-slate-100 shadow-sm">
+                        <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+                        <h3 class="text-2xl font-bold mb-4">Absolute Integrity</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Highest standards of transparency in regulatory liaisoning for market readiness.</p>
+                    </div>
+                    <div class="p-10 bg-white rounded-[3.5rem] border border-slate-100 shadow-sm">
+                        <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="sparkles" class="w-8 h-8"></i></div>
+                        <h3 class="text-2xl font-bold mb-4">Data-Driven Innovation</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Transforming business challenges into automated, intelligent digital solutions.</p>
+                    </div>
+                    <div class="p-10 bg-white rounded-[3.5rem] border border-slate-100 shadow-sm">
+                        <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-8"><i data-lucide="trophy" class="w-8 h-8"></i></div>
+                        <h3 class="text-2xl font-bold mb-4">Proven Excellence</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Over 10 years of mastery as a strategic partner in your growth.</p>
+                    </div>
+                </div>
+                <!-- Workflow -->
+                <div class="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white relative overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="target" class="text-emerald-500"></i> GreenCode Workflow</h3>
+                            <div class="space-y-10">
+                                <div class="flex gap-6"><div class="text-3xl font-black text-white/10 shrink-0">01</div><div class="flex items-center"><h5 class="font-bold text-lg">Discovery & Analysis</h5></div></div>
+                                <div class="flex gap-6"><div class="text-3xl font-black text-white/10 shrink-0">02</div><div class="flex items-center"><h5 class="font-bold text-lg">Strategic Roadmap</h5></div></div>
+                                <div class="flex gap-6"><div class="text-3xl font-black text-white/10 shrink-0">03</div><div class="flex items-center"><h5 class="font-bold text-lg">Precision Execution</h5></div></div>
+                                <div class="flex gap-6"><div class="text-3xl font-black text-white/10 shrink-0">04</div><div class="flex items-center"><h5 class="font-bold text-lg">Final Deployment</h5></div></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/5 p-8 rounded-3xl border border-white/10 text-center">
+                                <i data-lucide="users" class="text-emerald-500 mb-4 mx-auto"></i>
+                                <div class="text-3xl font-bold">Pan-India</div>
+                            </div>
+                            <div class="bg-white/5 p-8 rounded-3xl border border-white/10 text-center mt-8">
+                                <i data-lucide="bar-chart-3" class="text-blue-500 mb-4 mx-auto"></i>
+                                <div class="text-3xl font-bold">10+ Yrs</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </section>
+
+        <!-- Contact View -->
+        <section id="view-contact" class="view-content view-hidden pt-32 pb-24 px-6 min-h-screen">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-20">
+                    <h1 class="text-5xl font-bold mb-6 text-slate-900">Get In Touch</h1>
+                    <p class="text-xl text-slate-500 max-w-2xl mx-auto">Connect directly with GreenCode LLP for specialized consultation across both our Agro and Tech terminals.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                    <div class="p-12 bg-emerald-50 rounded-[4rem] border border-emerald-100 flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-emerald-600 mb-8 shadow-sm"><i data-lucide="leaf" class="w-8 h-8"></i></div>
+                        <h3 class="text-3xl font-bold text-emerald-950 mb-4">Agro Terminal</h3>
+                        <p class="text-emerald-800/60 font-medium">CIB&RC registrations and FCO compliance.</p>
+                    </div>
+                    <div class="p-12 bg-blue-50 rounded-[4rem] border border-blue-100 flex flex-col items-center">
+                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-blue-600 mb-8 shadow-sm"><i data-lucide="cpu" class="w-8 h-8"></i></div>
+                        <h3 class="text-3xl font-bold text-blue-950 mb-4">Tech Terminal</h3>
+                        <p class="text-blue-800/60 font-medium">Software engineering and ML solutions.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto text-slate-900">
+                    <div class="flex gap-6 p-10 bg-white rounded-[3rem] border border-slate-100 items-center justify-center shadow-sm hover:shadow-lg transition-shadow">
+                        <i data-lucide="mail" class="text-emerald-500"></i>
+                        <div class="text-left font-bold md:text-lg">contact@greencode.llp</div>
+                    </div>
+                    <div class="flex gap-6 p-10 bg-white rounded-[3rem] border border-slate-100 items-center justify-center shadow-sm hover:shadow-lg transition-shadow">
+                        <i data-lucide="phone" class="text-blue-500"></i>
+                        <div class="text-left font-bold md:text-lg">+91 82182 60171</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
-    
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
 
-        // Simple smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white pt-24 pb-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white">
+                            <i data-lucide="leaf" class="w-4 h-4"></i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tighter">GreenCode LLP</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">
+                        A multi-disciplinary firm specializing in Agricultural Regulatory Compliance and High-End Information Technology.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer border border-slate-800"><i data-lucide="linkedin" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-emerald-600 transition-colors cursor-pointer border border-slate-800"><i data-lucide="twitter" class="w-4 h-4"></i></div>
+                        <div class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer border border-slate-800"><i data-lucide="github" class="w-4 h-4"></i></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-slate-100 uppercase tracking-widest text-xs">Agro Terminal</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm font-medium">
+                        <li class="hover:text-emerald-500 cursor-pointer transition-colors" onclick="showView('agro')">CIB&RC 9(3) / 9(4)</li>
+                        <li class="hover:text-emerald-500 cursor-pointer transition-colors" onclick="showView('agro')">FCO 1985 Compliance</li>
+                        <li class="hover:text-emerald-500 cursor-pointer transition-colors" onclick="showView('agro')">State Sale Permissions</li>
+                        <li class="hover:text-emerald-500 cursor-pointer transition-colors" onclick="showView('agro')">Bio-efficacy Data</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-slate-100 uppercase tracking-widest text-xs">Tech Terminal</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm font-medium">
+                        <li class="hover:text-blue-400 cursor-pointer transition-colors" onclick="showView('tech')">Machine Learning Models</li>
+                        <li class="hover:text-blue-400 cursor-pointer transition-colors" onclick="showView('tech')">Scalable Web Apps</li>
+                        <li class="hover:text-blue-400 cursor-pointer transition-colors" onclick="showView('tech')">System Architecture</li>
+                        <li class="hover:text-blue-400 cursor-pointer transition-colors" onclick="showView('tech')">Cloud Infrastructure</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-slate-100 uppercase tracking-widest text-xs">Contact Us</h4>
+                    <div class="space-y-4 text-slate-400 text-sm">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-emerald-500"></i>
+                            <span>Global Operations / Pan-India</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-emerald-500"></i>
+                            <span>contact@greencode.llp</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-emerald-500"></i>
+                            <span>+91 82182 60171</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs text-center md:text-left">
+                <p>© 2024 GreenCode LLP. Built with Precision & Integrity.</p>
+                <div class="flex gap-8 uppercase font-bold tracking-widest text-[10px]">
+                    <span class="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                    <span class="hover:text-white cursor-pointer transition-colors">Legal Terms</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // View Logic
+        function showView(viewId) {
+            const views = ['home', 'agro', 'tech', 'about', 'contact'];
+            
+            views.forEach(id => {
+                const element = document.getElementById(`view-${id}`);
+                const btn = document.querySelector(`[data-view-btn="${id}"]`);
+                
+                if (id === viewId) {
+                    element.classList.remove('view-hidden');
+                    element.classList.add('view-visible');
+                    if (btn) btn.classList.add('nav-link-active', 'text-emerald-600');
+                    if (btn) btn.classList.remove('text-slate-500');
+                } else {
+                    element.classList.add('view-hidden');
+                    element.classList.remove('view-visible');
+                    if (btn) btn.classList.remove('nav-link-active', 'text-emerald-600');
+                    if (btn) btn.classList.add('text-slate-500');
+                }
             });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('glass-nav', 'shadow-sm', 'py-3');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('glass-nav', 'shadow-sm', 'py-3');
+                nav.classList.add('py-6');
+            }
         });
+
+        // Initialize
+        window.onload = () => {
+            showView('home');
+            lucide.createIcons();
+        };
     </script>
 </body>
 </html>
